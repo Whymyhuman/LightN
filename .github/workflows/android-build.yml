@@ -23,6 +23,15 @@ jobs:
         with:
           cache-disabled: false
 
+      - name: Generate Gradle wrapper
+        run: gradle wrapper
+
+      - name: Commit Gradle wrapper
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add/update Gradle wrapper"
+          file_pattern: "gradlew gradle/wrapper/gradle-wrapper.properties gradle/wrapper/gradle-wrapper.jar"
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
